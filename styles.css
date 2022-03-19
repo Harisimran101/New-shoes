@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
 :root {
-    --heading: e;
+    --heading: 700;
     --paragraph:
 }
 
 * {
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 img::selection {
@@ -104,6 +108,7 @@ body {
 
 #info-heading {
    text-transform: uppercase;
+   font-weight: var(--heading);
 }
 
 #info-paragraph {
