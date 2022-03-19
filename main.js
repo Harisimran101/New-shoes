@@ -89,19 +89,12 @@ for(let i = 0; i < side.length; i++){
 
 			const renderer = new THREE.WebGLRenderer({antialias: true,canvas: webgl});
 			renderer.setSize( width, height);
-            renderer.setPixelRatio(window.devicePixelRatio / 1.2);
+            renderer.setPixelRatio(window.devicePixelRatio * 1.3);
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1;
             
 
-            // const light = new THREE.HemisphereLight( 'white', 'white', 1.2);
-            // scene.add( light );
-
-            // const pmremGenerator = new THREE.PMREMGenerator( renderer );
-            // scene.background = new THREE.Color( 0xeeeeee );
-			// scene.environment = pmremGenerator.fromScene( new RoomEnvironment() ).texture;
-			// scene.fog = new THREE.Fog( 0xeeeeee, 10, 50 );
 
 
             const controls = new OrbitControls( camera, renderer.domElement );
@@ -196,7 +189,7 @@ function update(){
 
 
 
-   const raycaster = new THREE.Raycaster();
+
    const annotations = [
        {
         position: new THREE.Vector3(-0.55,1.35,0.3),
@@ -289,27 +282,9 @@ function update(){
 
                  const screenposition = annotation.position.clone();
                  screenposition.project(camera);
-                 raycaster.setFromCamera(screenposition,camera);
-                 const intersects = raycaster.intersectObjects(scene.children, true);
+              
 
-                 if(intersects.length === 0){
-                      annotation.element.classList.add('visible')
-                 }
-
-                 else {
-                      const intersectsDistance = intersects[0].distance;
-                    const annotationdistance = annotation.position.distanceTo(camera.position);
-
-                    if(intersectsDistance < annotationdistance){
-                        annotation.element.classList.remove('visible')
-
-                    }
-
-                    else {
-                        annotation.element.classList.add('visible')
-
-                    }
-                 }
+      
 
                  const translateX = screenposition.x * width * 0.5;
                  const translateY = - screenposition.y * height * 0.5;

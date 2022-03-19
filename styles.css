@@ -27,6 +27,14 @@ body {
      height: 100vh;
 }
 
+.preloader {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .annotation {
    width: 40px;
@@ -148,7 +156,7 @@ body {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
    .interface {
       left: 0;
       flex-direction: column-reverse;
