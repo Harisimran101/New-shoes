@@ -27,6 +27,7 @@ body {
      height: 100vh;
 }
 
+
 .annotation {
    width: 40px;
    height: 40px;
@@ -159,4 +160,16 @@ body {
       width: 100%;
       max-width: 100%;
    }
+
+   .select-side {
+       
+       flex-wrap: wrap;
+      }
+
+      .side {
+          width: 120px;
+          height: auto;
+      }
+
+
 }
