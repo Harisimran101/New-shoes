@@ -164,6 +164,8 @@ body {
    .select-side {
        
        flex-wrap: wrap;
+       column-gap: 10px;
+       row-gap: 10px;
       }
 
       .side {
