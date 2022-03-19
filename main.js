@@ -69,9 +69,9 @@ for(let i = 0; i < side.length; i++){
         
 
         for(let i = 0; i < side.length; i++){
-            side[i].style.filter = 'contrast(100%) brightness(100%)';
+            side[i].classList.remove('active');
         }
-         side[i].style.filter = 'contrast(200%) brightness(110%)';
+        side[i].classList.add('active');
 
         icon.src = items[i].img;
         infoheading.innerText = items[i].heading;
@@ -234,6 +234,13 @@ function update(){
    
 
    annotations[i].element.addEventListener('click', () =>{
+
+      for(let i = 0; i < side.length; i++ ){
+        side[i].classList.remove('active'); 
+      }
+
+      side[i].classList.add('active');
+
        anime({
             targets: camera.position,
             x: [camera.position.x, annotations[i].position.x],

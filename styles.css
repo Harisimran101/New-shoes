@@ -137,6 +137,10 @@ body {
    object-fit: cover;
 }
 
+.active {
+    filter: contrast(200%) brightness(110%) !important;
+}
+
 
 @media (max-width: 480px) {
    .interface {
