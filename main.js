@@ -90,7 +90,7 @@ for(let i = 0; i < side.length; i++){
 
 			const renderer = new THREE.WebGLRenderer({antialias: true,canvas: webgl});
 			renderer.setSize( width, height);
-            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setPixelRatio(window.devicePixelRatio / 1.2);
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1;
