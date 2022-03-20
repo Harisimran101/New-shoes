@@ -94,6 +94,8 @@ for(let i = 0; i < side.length; i++){
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1;
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             
             if(width < 600){
                 camera.fov = 80;
@@ -111,7 +113,19 @@ for(let i = 0; i < side.length; i++){
 
 
 
-    
+    // LIGHTS 
+
+    const light = new THREE.DirectionalLight( 'white', 0.5, 100 );
+light.position.set( 0, 3, 2 ); //default; light shining from top
+light.castShadow = true; // default false
+scene.add( light );
+
+light.shadow.bias = -0.0002;
+light.shadow.mapSize.width = 128; // default
+light.shadow.mapSize.height = 128; // default
+light.shadow.camera.near = 0.01; // default
+light.shadow.camera.far = 1000; // default
+
      
 const pmremGenerator = new THREE.PMREMGenerator( renderer );
 new RGBELoader().load( 'environment.hdr', function ( texture ) {
@@ -189,6 +203,11 @@ function update(){
          model.scale.set(2,2,2);
          point1 = model.getObjectByName('point1');
          update();
+
+         model.traverse(function(child){
+              child.castShadow = true;
+              child.receiveShadow = true;
+         })
 
    });
 
