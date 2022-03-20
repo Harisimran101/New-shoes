@@ -170,30 +170,158 @@ function update(){
     // console.log(side);
 
     for(let i = 0; i < side.length; i++){
-     side[i].addEventListener('click', () =>{
-         
+     side[i].addEventListener('click', (event) =>{
 
-        anime({
-            targets: camera.position,
-            x: [camera.position.x, annotations[i].position.x],
-            y: [camera.position.y, annotations[i].position.y],
-            z: [camera.position.z, annotations[i].position.z + 1.2],
-            duration: 1300,
-            easing: 'easeInOutCubic',
-            delay: 100,
-       })
+       switch(side[i].classList[1]){
 
-       anime({
-        targets: controls.target,
-        x: [controls.target.x, annotations[i].position.x],
-        y: [controls.target.y, annotations[i].position.y],
-        z: [controls.target.z, annotations[i].position.z],
-        duration: 1300,
-        easing: 'easeInOutCubic',
-        delay: 100,
+            case 'side1':
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[0].position.x - 1.55],
+                    y: [camera.position.y, annotations[0].position.y],
+                    z: [camera.position.z, annotations[0].position.z + 1.2],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[0].position.x],
+                y: [controls.target.y, annotations[0].position.y],
+                z: [controls.target.z, annotations[0].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100, 
+           })
+
+            break;
+
+            case 'side2':
+            
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[1].position.x],
+                    y: [camera.position.y, annotations[1].position.y],
+                    z: [camera.position.z, annotations[1].position.z + 1.2],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[1].position.x],
+                y: [controls.target.y, annotations[1].position.y],
+                z: [controls.target.z, annotations[1].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100,
+           })
 
 
-   })
+            break;
+
+            case 'side3':
+            
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[2].position.x],
+                    y: [camera.position.y, annotations[2].position.y + 0.6],
+                    z: [camera.position.z, annotations[2].position.z + 1.4],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[2].position.x],
+                y: [controls.target.y, annotations[2].position.y],
+                z: [controls.target.z, annotations[2].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100,
+           })
+             break;
+
+             
+            case 'side4':
+            
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[3].position.x + 2],
+                    y: [camera.position.y, annotations[3].position.y ],
+                    z: [camera.position.z, annotations[3].position.z + 1.2],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[3].position.x],
+                y: [controls.target.y, annotations[3].position.y],
+                z: [controls.target.z, annotations[3].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100,
+           })
+             break;
+
+                        
+            case 'side5':
+            
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[4].position.x + 1],
+                    y: [camera.position.y, annotations[4].position.y - 0.2],
+                    z: [camera.position.z, annotations[4].position.z - 0.85],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[4].position.x],
+                y: [controls.target.y, annotations[4].position.y],
+                z: [controls.target.z, annotations[4].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100,
+           })
+             break;
+
+             case 'side6':
+            
+                anime({
+                    targets: camera.position,
+                    x: [camera.position.x, annotations[5].position.x + 1.4],
+                    y: [camera.position.y, annotations[5].position.y],
+                    z: [camera.position.z, annotations[5].position.z + 1.8],
+                    duration: 1300,
+                    easing: 'easeInOutCubic',
+                    delay: 100,
+               })
+        
+               anime({
+                targets: controls.target,
+                x: [controls.target.x, annotations[5].position.x],
+                y: [controls.target.y, annotations[5].position.y],
+                z: [controls.target.z, annotations[5].position.z],
+                duration: 1300,
+                easing: 'easeInOutCubic',
+                delay: 100,
+           })
+             break;
+
+
+
+       }
+        
+      
+      
 
      })
 
@@ -247,50 +375,50 @@ function update(){
        },
 
        {
-        position: new THREE.Vector3(-3,0.4,-2),
+        position: new THREE.Vector3(0.45,1,0.8),
         element: document.querySelector('.anno-6'),   
        },
    ]
 
-   for(let i = 0; i < annotations.length; i++){
+//    for(let i = 0; i < annotations.length; i++){
         
    
 
-   annotations[i].element.addEventListener('click', () =>{
+//    annotations[i].element.addEventListener('click', () =>{
 
-      for(let i = 0; i < side.length; i++ ){
-        side[i].classList.remove('active'); 
-      }
+//       for(let i = 0; i < side.length; i++ ){
+//         side[i].classList.remove('active'); 
+//       }
 
-      side[i].classList.add('active');
+//       side[i].classList.add('active');
 
-       anime({
-            targets: camera.position,
-            x: [camera.position.x, annotations[i].position.x],
-            y: [camera.position.y, annotations[i].position.y],
-            z: [camera.position.z, annotations[0].position.z + 1.2],
-            duration: 1300,
-            easing: 'easeInOutCubic',
-            delay: 100,
-       })
+//        anime({
+//             targets: camera.position,
+//             x: [camera.position.x, annotations[i].position.x],
+//             y: [camera.position.y, annotations[i].position.y],
+//             z: [camera.position.z, annotations[0].position.z + 1.2],
+//             duration: 1300,
+//             easing: 'easeInOutCubic',
+//             delay: 100,
+//        })
 
-       anime({
-        targets: controls.target,
-        x: [controls.target.x, annotations[i].position.x],
-        y: [controls.target.y, annotations[i].position.y],
-        z: [controls.target.z, annotations[i].position.z],
-        easing: 'easeInOutCubic',
-        duration: 1300,
-        delay: 100,
-      })
-
-
-
-   })
+//        anime({
+//         targets: controls.target,
+//         x: [controls.target.x, annotations[i].position.x],
+//         y: [controls.target.y, annotations[i].position.y],
+//         z: [controls.target.z, annotations[i].position.z],
+//         easing: 'easeInOutCubic',
+//         duration: 1300,
+//         delay: 100,
+//       })
 
 
 
-}
+//    })
+
+
+
+// }
 
 
 
