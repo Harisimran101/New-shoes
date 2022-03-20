@@ -44,6 +44,7 @@ body {
    left: 50%;
    top: 50%;
    color: white;
+   background: rgba(0, 0, 0, 0.7);
    text-align: center;
    z-index: 10;
    display: flex;
@@ -53,10 +54,7 @@ body {
    overflow: hidden;
 }
 
-.annotation img {
-    width: auto;
-    height: 100%;
-}
+
 
 .interface {
    position: absolute;
