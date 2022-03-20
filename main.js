@@ -80,6 +80,7 @@ for(let i = 0; i < side.length; i++){
     })
 }
 
+
             const scene = new THREE.Scene();
             scene.background = new THREE.Color( '#F2DEC6' );
 			scene.fog = new THREE.Fog( '#785c38', 5,15 );
@@ -94,6 +95,9 @@ for(let i = 0; i < side.length; i++){
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1;
             
+            if(width < 600){
+                camera.fov = 75;
+            }
 
 
 
