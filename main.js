@@ -90,7 +90,7 @@ for(let i = 0; i < side.length; i++){
 
 			const renderer = new THREE.WebGLRenderer({antialias: true,canvas: webgl});
 			renderer.setSize( width, height);
-            renderer.setPixelRatio(window.devicePixelRatio * 1.3);
+            renderer.setPixelRatio(window.devicePixelRatio);
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1;
@@ -103,6 +103,7 @@ for(let i = 0; i < side.length; i++){
 
             const controls = new OrbitControls( camera, renderer.domElement );
             controls.enableDamping = true;
+            controls.enablePan = false;
             controls.dampingFactor = 0.06;
             controls.minDistance = 2;
             controls.maxDistance = 5.5;
