@@ -102,9 +102,9 @@ for(let i = 0; i < side.length; i++){
 
 
             const controls = new OrbitControls( camera, renderer.domElement );
-            controls.enableDamping = true;
+         //   controls.enableDamping = true;
             controls.enablePan = false;
-            controls.dampingFactor = 0.06;
+         //   controls.dampingFactor = 0.06;
             controls.minDistance = 2;
             controls.maxDistance = 5.5;
             controls.maxPolarAngle = Math.PI / 2.1;
