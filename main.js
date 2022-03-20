@@ -96,7 +96,7 @@ for(let i = 0; i < side.length; i++){
             renderer.toneMappingExposure = 1;
             
             if(width < 600){
-                camera.fov = 75;
+                camera.fov = 80;
             }
 
 
