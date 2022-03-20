@@ -43,38 +43,18 @@ body {
    position: absolute;
    left: 50%;
    top: 50%;
-   background: rgba(0, 0, 0, 0.85);
    color: white;
    text-align: center;
-   opacity: 0.7;
    z-index: 10;
-   display: grid;
-   place-items: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
    cursor: pointer;
 }
 
-.visible {
-  opacity: 1;
-}
-
-.dialog {
-    position: absolute;
-    left: 0%;
-    transform: translateX(-50%);
-    top: 50px;
-    min-width: 160px;
-    padding: 18px 12px;
-    border-radius: 8px;
-    background: black;
-    color: white;
-    text-align: center;
-    opacity: 0;
-    display: none;
-}
-
-.annotation:hover > .dialog { 
-    opacity: 1;
-    display: block;
+.annotation img {
+    width: auto;
+    height: 40px;
 }
 
 .interface {

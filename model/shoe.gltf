@@ -210,8 +210,8 @@
     "images" : [
         {
             "mimeType" : "image/jpeg",
-            "name" : "ground",
-            "uri" : "textures/ground.jpg"
+            "name" : "ground-texture",
+            "uri" : "textures/ground-texture.jpg"
         },
         {
             "mimeType" : "image/jpeg",
