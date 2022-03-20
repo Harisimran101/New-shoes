@@ -63,6 +63,9 @@ img::selection {
    overflow: hidden;
 }
 
+.hide {
+    display: none;
+}
 
 
 .interface {

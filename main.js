@@ -11,12 +11,14 @@ const side = document.querySelectorAll('.side');
 const icon = document.querySelector('#icon');
 const infoheading = document.querySelector('#info-heading');
 const infoparagraph = document.querySelector('#info-paragraph');
+const allannotation = document.querySelectorAll('.annotation');
 
 const width = webgl.offsetWidth;
 const height = webgl.offsetHeight;
 let model;
 let item1,item2,item3,item4,item5,item6;
 let point1,point2,point3;
+
 
 const items = [
 item1 = {
@@ -69,9 +71,11 @@ for(let i = 0; i < side.length; i++){
         
 
         for(let i = 0; i < side.length; i++){
+             allannotation[i].classList.add('hide');
             side[i].classList.remove('active');
         }
         side[i].classList.add('active');
+        allannotation[i].classList.remove('hide');
 
         icon.src = items[i].img;
         infoheading.innerText = items[i].heading;
@@ -83,7 +87,7 @@ for(let i = 0; i < side.length; i++){
 
             const scene = new THREE.Scene();
             scene.background = new THREE.Color( '#F2DEC6' );
-			scene.fog = new THREE.Fog( '#785c38', 5,15 );
+			scene.fog = new THREE.Fog( '#785c38', 5,30 );
 
 
 			const camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
@@ -107,7 +111,7 @@ for(let i = 0; i < side.length; i++){
             controls.enableDamping = true;
             controls.enablePan = false;
             controls.dampingFactor = 0.06;
-            controls.minDistance = 2;
+            controls.minDistance = 0.35;
             controls.maxDistance = 5.5;
             controls.maxPolarAngle = Math.PI / 2.1;
 
@@ -124,7 +128,7 @@ light.shadow.bias = -0.0002;
 light.shadow.mapSize.width = 128; // default
 light.shadow.mapSize.height = 128; // default
 light.shadow.camera.near = 0.01; // default
-light.shadow.camera.far = 1000; // default
+light.shadow.camera.far = 500; // default
 
      
 const pmremGenerator = new THREE.PMREMGenerator( renderer );
@@ -167,11 +171,13 @@ function update(){
 
     for(let i = 0; i < side.length; i++){
      side[i].addEventListener('click', () =>{
+         
+
         anime({
             targets: camera.position,
             x: [camera.position.x, annotations[i].position.x],
             y: [camera.position.y, annotations[i].position.y],
-            z: [camera.position.z, annotations[i].position.z + 1],
+            z: [camera.position.z, annotations[i].position.z + 1.2],
             duration: 1300,
             easing: 'easeInOutCubic',
             delay: 100,
@@ -221,22 +227,22 @@ function update(){
        },
 
        {
-        position: new THREE.Vector3(1,2,-0.3),
+        position: new THREE.Vector3(-0.1,2,0.5),
         element: document.querySelector('.anno-2'),
        },
 
        {
-        position: new THREE.Vector3(3,1,-2),
+        position: new THREE.Vector3(-0.1,2.3,-0.4),
         element: document.querySelector('.anno-3'),
        },
 
        {
-        position: new THREE.Vector3(1,2,-2),
+        position: new THREE.Vector3(0.38,1.38,0.3),
         element: document.querySelector('.anno-4'),
        },
 
        {
-        position: new THREE.Vector3(-2,1,-2),
+        position: new THREE.Vector3(-0.1,1.45,-0.9),
         element: document.querySelector('.anno-5'),   
        },
 
@@ -262,7 +268,7 @@ function update(){
             targets: camera.position,
             x: [camera.position.x, annotations[i].position.x],
             y: [camera.position.y, annotations[i].position.y],
-            z: [camera.position.z, annotations[0].position.z + 1],
+            z: [camera.position.z, annotations[0].position.z + 1.2],
             duration: 1300,
             easing: 'easeInOutCubic',
             delay: 100,
