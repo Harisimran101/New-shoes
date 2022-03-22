@@ -10,7 +10,9 @@
             "nodes" : [
                 8,
                 9,
-                10
+                10,
+                11,
+                12
             ]
         }
     ],
@@ -100,7 +102,7 @@
             ]
         },
         {
-            "name" : "Camera",
+            "name" : "Camera.001",
             "rotation" : [
                 0.483536034822464,
                 0.33687159419059753,
@@ -124,6 +126,34 @@
                 -0.041832998394966125,
                 0.7537405490875244,
                 0.4330799877643585
+            ]
+        },
+        {
+            "name" : "Light",
+            "rotation" : [
+                0.16907575726509094,
+                0.7558803558349609,
+                -0.27217137813568115,
+                0.570947527885437
+            ],
+            "translation" : [
+                4.076245307922363,
+                5.903861999511719,
+                -1.0054539442062378
+            ]
+        },
+        {
+            "name" : "Camera",
+            "rotation" : [
+                0.483536034822464,
+                0.33687159419059753,
+                -0.20870360732078552,
+                0.7804827094078064
+            ],
+            "translation" : [
+                7.358891487121582,
+                4.958309173583984,
+                6.925790786743164
             ]
         }
     ],
@@ -219,9 +249,9 @@
             "uri" : "textures/normal.jpg"
         },
         {
-            "mimeType" : "image/png",
+            "mimeType" : "image/jpeg",
             "name" : "Material.004_baseColor",
-            "uri" : "textures/Material_004_baseColor.png"
+            "uri" : "textures/Material_004_baseColor.jpg"
         },
         {
             "mimeType" : "image/jpeg",
@@ -233,7 +263,7 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 29,
+            "count" : 41,
             "max" : [
                 0.9166667461395264,
                 0,
@@ -249,19 +279,19 @@
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 29,
+            "count" : 41,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 29,
+            "count" : 41,
             "type" : "VEC2"
         },
         {
             "bufferView" : 3,
             "componentType" : 5126,
-            "count" : 29,
+            "count" : 41,
             "type" : "VEC2"
         },
         {
@@ -332,68 +362,68 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 348,
+            "byteLength" : 492,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 348,
-            "byteOffset" : 348
+            "byteLength" : 492,
+            "byteOffset" : 492
         },
         {
             "buffer" : 0,
-            "byteLength" : 232,
-            "byteOffset" : 696
+            "byteLength" : 328,
+            "byteOffset" : 984
         },
         {
             "buffer" : 0,
-            "byteLength" : 232,
-            "byteOffset" : 928
+            "byteLength" : 328,
+            "byteOffset" : 1312
         },
         {
             "buffer" : 0,
             "byteLength" : 192,
-            "byteOffset" : 1160
+            "byteOffset" : 1640
         },
         {
             "buffer" : 0,
             "byteLength" : 189228,
-            "byteOffset" : 1352
+            "byteOffset" : 1832
         },
         {
             "buffer" : 0,
             "byteLength" : 189228,
-            "byteOffset" : 190580
+            "byteOffset" : 191060
         },
         {
             "buffer" : 0,
             "byteLength" : 126152,
-            "byteOffset" : 379808
+            "byteOffset" : 380288
         },
         {
             "buffer" : 0,
             "byteLength" : 126152,
-            "byteOffset" : 505960
+            "byteOffset" : 506440
         },
         {
             "buffer" : 0,
             "byteLength" : 126152,
-            "byteOffset" : 632112
+            "byteOffset" : 632592
         },
         {
             "buffer" : 0,
             "byteLength" : 126152,
-            "byteOffset" : 758264
+            "byteOffset" : 758744
         },
         {
             "buffer" : 0,
             "byteLength" : 126152,
-            "byteOffset" : 884416
+            "byteOffset" : 884896
         },
         {
             "buffer" : 0,
             "byteLength" : 179994,
-            "byteOffset" : 1010568
+            "byteOffset" : 1011048
         }
     ],
     "samplers" : [
@@ -404,7 +434,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 1190564,
+            "byteLength" : 1191044,
             "uri" : "shoe.bin"
         }
     ]
