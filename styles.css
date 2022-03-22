@@ -37,12 +37,43 @@ img::selection {
 }
 
 .preloader {
+    position: fixed;
     width: 100vw;
     height: 100vh;
-    background: black;
+    background: rgb(252, 252, 252);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    row-gap: 25px;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.preloader img {
+    width: auto;
+    height: 150px;
+}
+
+.loading-bar {
+     position: relative;
+     width: calc(100% - 15%);
+     max-width: 450px;
+     border-radius: 20px;
+     height: 4px;
+     background: rgb(206, 206, 206);
+     overflow: hidden;
+}
+
+.loading-bar .progress {
+   position: absolute;
+   left: 0;
+   top: 0;
+    width: 0;
+    height: inherit;
+    border-radius: inherit;
+    background: black;
+
 }
 
 .annotation {

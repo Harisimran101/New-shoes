@@ -12,12 +12,57 @@ const icon = document.querySelector('#icon');
 const infoheading = document.querySelector('#info-heading');
 const infoparagraph = document.querySelector('#info-paragraph');
 const allannotation = document.querySelectorAll('.annotation');
+const preloader = document.querySelector('.preloader');
+const progressbar = document.querySelector('.progress');
+
+let point1data = {
+     x: 0,
+     y: 0,
+     z: 0
+};
+
+let point4data = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+
+let point5data = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+
+let point6data = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+
+if(window.innerWidth < 600){
+    point1data.x = 1.5;
+    point1data.y = 0;
+    point1data.z = 0;
+     
+    point4data.x = 1.8;
+    point4data.z = 1.5;
+
+    point5data.x = 0;
+    point5data.y = 0.2;
+    point5data.z = 0.8;
+
+    point6data.x = 1.8;
+    point6data.y = 0;
+    point6data.z = 0;
+}
+
 
 const width = webgl.offsetWidth;
 const height = webgl.offsetHeight;
 let model;
 let item1,item2,item3,item4,item5,item6;
 let point1,point2,point3;
+
 
 
 const items = [
@@ -91,6 +136,8 @@ for(let i = 0; i < side.length; i++){
 
 
 			const camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
+			camera.position.set(4,2,4);
+            
 
 			const renderer = new THREE.WebGLRenderer({antialias: true,canvas: webgl});
 			renderer.setSize( width, height);
@@ -101,13 +148,11 @@ for(let i = 0; i < side.length; i++){
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             
-            if(width < 600){
-                camera.fov = 80;
-            }
-
+        
 
 
             const controls = new OrbitControls( camera, renderer.domElement );
+            controls.target.set(0,1.3,0);
             controls.enableDamping = true;
             controls.enablePan = false;
             controls.dampingFactor = 0.06;
@@ -115,7 +160,8 @@ for(let i = 0; i < side.length; i++){
             controls.maxDistance = 5.5;
             controls.maxPolarAngle = Math.PI / 2.1;
 
-
+        
+           
 
     // LIGHTS 
 
@@ -142,7 +188,6 @@ new RGBELoader().load( 'environment.hdr', function ( texture ) {
 });
 
 
-			camera.position.set(0,3,4);
 
 const manager = new THREE.LoadingManager();
 manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
@@ -150,15 +195,19 @@ manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 };
 
 manager.onLoad = function ( ) {
-
-
+preloader.style.opacity = "0";
+preloader.style.pointerEvents  = 'none';
+   
 };
 
 
 manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
 
     console.log(itemsLoaded / itemsTotal);
+    const percentage = (itemsLoaded / itemsTotal) * 100 + '%'
+    progressbar.style.width = percentage;
 
+    
 };
 
 manager.onError = function ( url ) {
@@ -177,23 +226,27 @@ function update(){
             case 'side1':
                 anime({
                     targets: camera.position,
-                    x: [camera.position.x, annotations[0].position.x - 1.55],
-                    y: [camera.position.y, annotations[0].position.y],
-                    z: [camera.position.z, annotations[0].position.z + 1.2],
+                    x: [camera.position.x, annotations[0].position.x - 3 - point1data.x],
+                    y: [camera.position.y, annotations[0].position.y + 0.2],
+                    z: [camera.position.z, annotations[0].position.z + 1.2 + point1data.z ],
                     duration: 1300,
                     easing: 'easeInOutCubic',
                     delay: 100,
                })
+
+           
         
                anime({
                 targets: controls.target,
                 x: [controls.target.x, annotations[0].position.x],
                 y: [controls.target.y, annotations[0].position.y],
-                z: [controls.target.z, annotations[0].position.z],
+                z: [controls.target.z, annotations[0].position.z + 0.4],
                 duration: 1300,
                 easing: 'easeInOutCubic',
                 delay: 100, 
            })
+
+          
 
             break;
 
@@ -203,7 +256,7 @@ function update(){
                     targets: camera.position,
                     x: [camera.position.x, annotations[1].position.x],
                     y: [camera.position.y, annotations[1].position.y],
-                    z: [camera.position.z, annotations[1].position.z + 1.2],
+                    z: [camera.position.z, annotations[1].position.z + 2.2],
                     duration: 1300,
                     easing: 'easeInOutCubic',
                     delay: 100,
@@ -227,7 +280,7 @@ function update(){
                 anime({
                     targets: camera.position,
                     x: [camera.position.x, annotations[2].position.x],
-                    y: [camera.position.y, annotations[2].position.y + 0.6],
+                    y: [camera.position.y, annotations[2].position.y + 1.6],
                     z: [camera.position.z, annotations[2].position.z + 1.4],
                     duration: 1300,
                     easing: 'easeInOutCubic',
@@ -237,7 +290,7 @@ function update(){
                anime({
                 targets: controls.target,
                 x: [controls.target.x, annotations[2].position.x],
-                y: [controls.target.y, annotations[2].position.y],
+                y: [controls.target.y, annotations[2].position.y - 0.6],
                 z: [controls.target.z, annotations[2].position.z],
                 duration: 1300,
                 easing: 'easeInOutCubic',
@@ -250,9 +303,9 @@ function update(){
             
                 anime({
                     targets: camera.position,
-                    x: [camera.position.x, annotations[3].position.x + 2],
+                    x: [camera.position.x, annotations[3].position.x + 3.6 + point4data.x],
                     y: [camera.position.y, annotations[3].position.y ],
-                    z: [camera.position.z, annotations[3].position.z + 1.2],
+                    z: [camera.position.z, annotations[3].position.z + 0.6 - point4data.z],
                     duration: 1300,
                     easing: 'easeInOutCubic',
                     delay: 100,
@@ -262,7 +315,7 @@ function update(){
                 targets: controls.target,
                 x: [controls.target.x, annotations[3].position.x],
                 y: [controls.target.y, annotations[3].position.y],
-                z: [controls.target.z, annotations[3].position.z],
+                z: [controls.target.z, annotations[3].position.z - 0.5],
                 duration: 1300,
                 easing: 'easeInOutCubic',
                 delay: 100,
@@ -274,9 +327,9 @@ function update(){
             
                 anime({
                     targets: camera.position,
-                    x: [camera.position.x, annotations[4].position.x + 1],
-                    y: [camera.position.y, annotations[4].position.y - 0.2],
-                    z: [camera.position.z, annotations[4].position.z - 0.85],
+                    x: [camera.position.x, annotations[4].position.x  ],
+                    y: [camera.position.y, annotations[4].position.y - 1.4 + point5data.y],
+                    z: [camera.position.z, annotations[4].position.z - 0.85 - point5data.z ],
                     duration: 1300,
                     easing: 'easeInOutCubic',
                     delay: 100,
@@ -285,7 +338,7 @@ function update(){
                anime({
                 targets: controls.target,
                 x: [controls.target.x, annotations[4].position.x],
-                y: [controls.target.y, annotations[4].position.y],
+                y: [controls.target.y, annotations[4].position.y - 0.3],
                 z: [controls.target.z, annotations[4].position.z],
                 duration: 1300,
                 easing: 'easeInOutCubic',
@@ -297,7 +350,7 @@ function update(){
             
                 anime({
                     targets: camera.position,
-                    x: [camera.position.x, annotations[5].position.x + 1.4],
+                    x: [camera.position.x, annotations[5].position.x + 1.4 + point6data.x],
                     y: [camera.position.y, annotations[5].position.y],
                     z: [camera.position.z, annotations[5].position.z + 1.8],
                     duration: 1300,
