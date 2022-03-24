@@ -131,10 +131,11 @@ for(let i = 0; i < side.length; i++){
 
 
             const scene = new THREE.Scene();
-            scene.background = new THREE.Color( '#695439' );
-			scene.fog = new THREE.Fog( '#695439', 5,20 );
+            scene.background = new THREE.Color( '#736153' );
+			scene.fog = new THREE.Fog( '#736153', 5,20 );
 
 
+           
 			const camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
 			camera.position.set(4,2,4);
             
@@ -144,7 +145,7 @@ for(let i = 0; i < side.length; i++){
             renderer.setPixelRatio(window.devicePixelRatio / 1.2);
             renderer.outputEncoding = THREE.sRGBEncoding;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1;
+            renderer.toneMappingExposure = 0.85;
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             
@@ -176,7 +177,7 @@ renderer.setPixelRatio(window.devicePixelRatio / 1.2);
 
     // LIGHTS 
 
-    const light = new THREE.DirectionalLight( 'white', 0.5, 100 );
+    const light = new THREE.DirectionalLight( 'white', 0.3, 100 );
 light.position.set( 0, 3, 2 ); //default; light shining from top
 light.castShadow = true; // default false
 scene.add( light );
@@ -225,6 +226,8 @@ manager.onError = function ( url ) {
 
 
 };
+
+
 
 function update(){
     // console.log(side);
@@ -410,7 +413,7 @@ function update(){
    });
 
 
-
+const raycaster = new THREE.Raycaster();
 
    const annotations = [
        {
@@ -504,9 +507,16 @@ function update(){
 
                  const screenposition = annotation.position.clone();
                  screenposition.project(camera);
-              
+                 raycaster.setFromCamera(screenposition, camera);
+                 const intersects = raycaster.intersectObjects(scene.children,true);
 
-      
+                 console.log(intersects[0]);
+
+                //   if(intersects[0].object.name == 'Object_6'){
+                //        alert('s')
+                //   }   
+                
+                
 
                  const translateX = screenposition.x * width * 0.5;
                  const translateY = - screenposition.y * height * 0.5;
