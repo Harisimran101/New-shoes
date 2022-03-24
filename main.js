@@ -131,8 +131,8 @@ for(let i = 0; i < side.length; i++){
 
 
             const scene = new THREE.Scene();
-            scene.background = new THREE.Color( '#F2DEC6' );
-			scene.fog = new THREE.Fog( '#785c38', 5,30 );
+            scene.background = new THREE.Color( '#695439' );
+			scene.fog = new THREE.Fog( '#695439', 5,20 );
 
 
 			const camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
@@ -156,11 +156,22 @@ for(let i = 0; i < side.length; i++){
             controls.enableDamping = true;
             controls.enablePan = false;
             controls.dampingFactor = 0.06;
-            controls.minDistance = 0.35;
+            controls.minDistance = 1.2;
             controls.maxDistance = 5.5;
             controls.maxPolarAngle = Math.PI / 2.1;
 
-        
+ window.addEventListener('resize', () =>{
+onWindowResize()
+    });
+
+    function onWindowResize() {
+            
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setPixelRatio(window.devicePixelRatio / 1.2);
+
+};   
            
 
     // LIGHTS 
