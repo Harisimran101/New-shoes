@@ -39,23 +39,6 @@ let point6data = {
     z: 0
 };
 
-if(window.innerWidth < 600){
-    point1data.x = 1.5;
-    point1data.y = 0;
-    point1data.z = 0;
-     
-    point4data.x = 1.8;
-    point4data.z = 1.5;
-
-    point5data.x = 0;
-    point5data.y = 0.2;
-    point5data.z = 0.8;
-
-    point6data.x = 1.8;
-    point6data.y = 0;
-    point6data.z = 0;
-}
-
 
 const width = webgl.offsetWidth;
 const height = webgl.offsetHeight;
@@ -405,6 +388,29 @@ function update(){
          point1 = model.getObjectByName('point1');
          update();
 
+         
+if(window.innerWidth < 600){
+    point1data.x = 1.5;
+    point1data.y = 0;
+    point1data.z = 0;
+     
+    point4data.x = 1.8;
+    point4data.z = 1.5;
+
+    point5data.x = 0;
+    point5data.y = 0.2;
+    point5data.z = 0.8;
+
+    point6data.x = 1.8;
+    point6data.y = 0;
+    point6data.z = 0;
+
+    if(model != undefined){
+        model.scale.set(1.8,1.8,1.8);
+    }
+}
+
+
          model.traverse(function(child){
               child.castShadow = true;
               child.receiveShadow = true;
@@ -510,8 +516,28 @@ const raycaster = new THREE.Raycaster();
                  raycaster.setFromCamera(screenposition, camera);
                  const intersects = raycaster.intersectObjects(scene.children,true);
 
-                 console.log(intersects[0]);
+                    
+                 if(intersects.length === 0){
+                   //   console.log(intersects)
+                 }
 
+                 else {
+                      const intersectiondistance = intersects[0].distance;
+                      const point1distance = annotations[0].position.distanceTo(camera.position);
+                      const point2distance = annotations[1].position.distanceTo(camera.position);
+                      const point3distance = annotations[2].position.distanceTo(camera.position);
+                      const point4distance = annotations[3].position.distanceTo(camera.position);
+                      const point5distance = annotations[4].position.distanceTo(camera.position);
+                      const point6distance = annotations[5].position.distanceTo(camera.position);
+console.log(point1distance)
+                     // console.log(point2distance)
+           
+
+
+                    //  if(allannotation[0].style.display = 'none'){
+                    //       alert('s')
+                    //  }
+                    }
                 //   if(intersects[0].object.name == 'Object_6'){
                 //        alert('s')
                 //   }   
